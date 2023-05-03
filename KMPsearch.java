@@ -2,6 +2,17 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+/**
+ * Uses a given skip array to search through lines of
+ * a file for some string.
+ * Outputs the line and the column of the first occurrence of
+ * the string on each line (if the string exists on that line)
+ * 
+ * Usage: java KMPsearch [skip array] [file to search]
+ * 
+ * 
+ * Created by Luke Finlayson, 1557835
+ */
 public class KMPsearch {
   public static void main(String[] args) {
     // Ensure valid arguments have been passed into the program
@@ -92,10 +103,13 @@ public class KMPsearch {
             break;
           }
 
+          // Offset the pointer in the line being read if we have to skip
           if (skip != 0) {
             pointer += skip;
             suffix = 0;
           }
+          // Otherwise move the pointer forwards and look for 
+          // the next character in the search string
           else {
             pointer++;
             suffix++;

@@ -1,5 +1,13 @@
 import java.util.ArrayList;
 
+/**
+ * Produces a skip array for some search string.
+ * 
+ * Usage: java KMPtable [search string]
+ * 
+ * 
+ * Created by Luke Finlayson, 1557835
+ */
 public class KMPtable {
   public static void main(String[] args) {
     // We only want one arg - the word to generate the table for
