@@ -26,10 +26,12 @@ public class KMPsearch {
     ArrayList<Character> symbols;
     int[][] skipArray;
 
+    BufferedReader reader;
+
     // Create the skip array from the given file
     try {
       FileReader file = new FileReader(args[0]);
-      BufferedReader reader = new BufferedReader(file);
+      reader = new BufferedReader(file);
 
       String line = reader.readLine();
 
@@ -74,7 +76,7 @@ public class KMPsearch {
     // Find the target word in the given file
     try {
       FileReader file = new FileReader(args[1]);
-      BufferedReader reader = new BufferedReader(file);
+      reader = new BufferedReader(file);
 
       String line = reader.readLine();
 
@@ -105,6 +107,11 @@ public class KMPsearch {
 
           // Offset the pointer in the line being read if we have to skip
           if (skip != 0) {
+            // Last letter could be the start of the next word
+            if (symbols.get(symbolPos) == word[0]) {
+              skip--;
+            }
+
             pointer += skip;
             suffix = 0;
           }
